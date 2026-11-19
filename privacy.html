@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>storm-desk privacy</title><style>body{font:16px/1.6 system-ui,sans-serif;max-width:42rem;margin:2rem auto;padding:0 1rem;color:#222}a{color:#0b5}</style></head><body><p><a href="index.html">Support</a> | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p><h1>storm-desk privacy</h1>
+<p>storm-desk runs on Atlassian Forge, inside your Atlassian site. This page tells you what it stores.</p>
+<h2>What the app stores</h2>
+<p>The app stores this in Forge hosted storage for your site:</p>
+<ul>
+<li>For each new service request: its id, issue key, project key, summary text, created time, and the account id of the reporter.</li>
+<li>A numeric vector made from the request text (used to find similar requests), with the request id and key.</li>
+<li>A short marker that says a request was queued for processing.</li>
+<li>For each storm parent issue the app made: its key, the linked requests (id, key, summary), and the "maybe" requests (id, key, summary, score).</li>
+<li>A marker per request that says a late request was already handled.</li>
+<li>A page log of the last 100 actions (time, action text, count).</li>
+</ul>
+<p>The summary text and the reporter account id can be personal data. When you use the sample button, the app also creates test customers with example.com addresses in your Jira Service Management site.</p>
+<h2>Where the data goes</h2>
+<p>Nowhere outside Atlassian. The app has no external network permission, and the language models that compare the text run inside the app function. We do not receive your data. We have no server and no database.</p>
+<h2>How long it stays</h2>
+<ul>
+<li>Requests, vectors and queue markers: removed after 3 hours. The clean-up runs when the next new service request arrives, so the last requests can stay longer on a quiet site.</li>
+<li>Page log: only the newest 100 lines are kept.</li>
+<li>Storm parent records and late-request markers: kept until the app is uninstalled. The app has no delete step for them.</li>
+<li>After uninstall: Atlassian soft deletes the app data and keeps it for the retention period in its own policy (see the <a href="https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle/">Forge data lifecycle page</a>).</li>
+</ul>
+<h2>How to remove your data</h2>
+<p>Ask the site admin to uninstall the app. Comments and links the app made in Jira are normal Jira data; the site admin manages them in Jira.</p>
+<h2>Contact</h2>
+<p>Use <a href="https://github.com/Kylne700/storm-desk-site/issues">GitHub Issues</a>. Do not put personal data in an issue.</p>
+<hr><p>storm-desk by Kylne700. Built with AI coding assistance.</p></body></html>
