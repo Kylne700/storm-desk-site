@@ -3,21 +3,20 @@
 <h2>What the app stores</h2>
 <p>The app stores this in Forge hosted storage for your site:</p>
 <ul>
-<li>For each new service request: its id, issue key, project key, summary text, created time, and the account id of the reporter.</li>
+<li>For each new service request: its id, issue key, project key, summary text, and created time. The app does not store account ids.</li>
 <li>A numeric vector made from the request text (used to find similar requests), with the request id and key.</li>
 <li>A short marker that says a request was queued for processing.</li>
 <li>For each storm parent issue the app made: its key, the linked requests (id, key, summary), and the "maybe" requests (id, key, summary, score).</li>
 <li>A marker per request that says a late request was already handled.</li>
 <li>A page log of the last 100 actions (time, action text, count).</li>
 </ul>
-<p>The summary text and the reporter account id can be personal data. When you use the sample button, the app also creates test customers with example.com addresses in your Jira Service Management site.</p>
+<p>The summary text can be personal data. When you use the sample button, the app also creates test customers with example.com addresses in your Jira Service Management site.</p>
 <h2>Where the data goes</h2>
 <p>Nowhere outside Atlassian. The app has no external network permission, and the language models that compare the text run inside the app function. We do not receive your data. We have no server and no database.</p>
 <h2>How long it stays</h2>
 <ul>
-<li>Requests, vectors and queue markers: removed after 3 hours. The clean-up runs when the next new service request arrives, so the last requests can stay longer on a quiet site.</li>
-<li>Page log: only the newest 100 lines are kept.</li>
-<li>Storm parent records and late-request markers: kept until the app is uninstalled. The app has no delete step for them.</li>
+<li>Each stored record has a time limit, and Atlassian Forge storage deletes it after that time. Requests, vectors and queue markers: 3 hours after they are written. Storm parent records, late-request markers, the page log and small cache markers: 12 hours after their last change. Forge can take up to 48 more hours to delete an expired record. The app also deletes requests older than 3 hours, with their vectors, when a new request arrives.</li>
+<li>The page log keeps only the newest 100 lines.</li>
 <li>After uninstall: Atlassian soft deletes the app data and keeps it for the retention period in its own policy (see the <a href="https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle/">Forge data lifecycle page</a>).</li>
 </ul>
 <h2>How to remove your data</h2>
